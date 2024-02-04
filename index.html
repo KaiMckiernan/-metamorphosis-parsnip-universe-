@@ -1,19 +1,42 @@
 <!DOCTYPE html>
 
 <style>
-    .h1 {
+    h1 {
         color: red;
+    }
+    #buzzWords {
+        color:blue;
     }
 
 </style>
 
 <h1>Metamorphosis Parsnip Universe</h1>
 
+<body>
+
 <p>Help! We were making a big batch of buzz words, but the batch spilt. Even worse, some mutation caused some of the words to turn into complete nonsense. If you see any of the words 'Metamorphosis','Parsnip' or 'Universe' please click on it</p>
+
+</body>
+
+
+<div id="buzzWords">hi</div>
+
+
+
 
 
 <script>
+const para = document.createElement("words");
+para.innerText = "This is a paragraph";
+document.getElementById("buzzWords").appendChild(para);
 
+para = document.createElement("words");
+para.innerText = "This is a paragraph";
+document.getElementById("buzzWords").appendChild(para);
+
+for(let i = 0; i < 50; i++) {
+    document.getElementById("buzzWords").appendChild(para);
+}
 
 
 </script>
