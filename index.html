@@ -10,33 +10,85 @@
 
 </style>
 
-<h1>Metamorphosis Parsnip Universe</h1>
+<title>"Metamorphosis Parsnip Universe"</title>
+
+<h1>"Metamorphosis Parsnip Universe"</h1>
 
 <body>
 
-<p>Help! We were making a big batch of buzz words, but the batch spilt. Even worse, some mutation caused some of the words to turn into complete nonsense. If you see any of the words 'Metamorphosis','Parsnip' or 'Universe' please click on it</p>
-
+<p>Help! Our "Metamorphosis Parsnip Universe" truck crashed, and some of the "Metamorphosis Parsnip Universe" bonds broke, creating strays.</p><br>
+<p>Please find strays(words that aren't in the order "Metamorphosis Parsnip Universe") to help us fix this problem, they are unstable and may explode</p>
+<br>
+<div>You have(WIP): 1234 seconds</div>
 </body>
 
 
-<div id="buzzWords">hi</div>
-
-
+<input id="answer"><button onclick="updateStages()">Answer</button> <p id="right or wrong"></p>
+<p id="buzzWords"></p>
 
 
 
 <script>
-const para = document.createElement("words");
-para.innerText = "This is a paragraph";
-document.getElementById("buzzWords").appendChild(para);
+let stage = 1;
+let text;
+let mpucount = 0.5;
 
-para = document.createElement("words");
-para.innerText = "This is a paragraph";
-document.getElementById("buzzWords").appendChild(para);
 
-for(let i = 0; i < 50; i++) {
-    document.getElementById("buzzWords").appendChild(para);
+function updateStages() {
+    console.log(document.getElementById('answer').value);
+    console.log(mpucount)
+    if(document.getElementById('answer').value === mpucount.toString()) {
+        console.log("yay");
+    }
+    
+
+}
+
+function createBuzzWords(stage) {
+    let probability = 1;
+    for(let i = 0; i < stage/5; i++) {
+        let random = Math.random();
+        probability = (random < probability) ? random : probability;
+    }
+    let text = createMPU(stage*20, probability);
+    mpucount = text[1];
+    document.getElementById("buzzWords").innerHTML = text[0];
+    console.log(text);
+
 }
 
 
+function produceMPU(length,sparsity) {
+    //Length is how long the paragraph is
+    //Sparsity is based on how many metamorphosis parsnip universes there are its a number under 1. 
+    let text = "";
+    let counter = 0;
+    let mpu = 0;
+    for(let i = 0; i < length; i++) {
+        let random = Math.ceil(Math.random()*3);
+        if(Math.random() < (sparsity)) {
+            text = text.concat(" Metamorphosis Parsnip Universe");
+            i += 2;
+            mpu++;
+        } else{
+            switch (random) {
+                case 1:
+                    text = text.concat(" Metamorphosis");
+                    counter = 1;
+                    break;
+                case 2: 
+                    text = text.concat(" Parsnip");
+                    counter = (counter === 1) ? 2 : 0;
+                    break;
+                case 3:
+                    text = text.concat(" Universe");
+                    counter = (counter === 2) ? 3 : 0;
+                    break;
+                }
+        }
+            if(counter === 3) {mpu++}
+    }
+    return [text,mpu];
+
+}
 </script>
