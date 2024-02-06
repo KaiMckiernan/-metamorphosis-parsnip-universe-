@@ -9,8 +9,12 @@
     }
 
 </style>
-
-<title>"Metamorphosis Parsnip Universe"</title>
+<head>
+    <title>"Metamorphosis Parsnip Universe"</title>
+    <meta name="keywords" content="Metamorphosis, Parsnip, Universe, Metamorphosis Parsnip Universe, Videogame, Project, Trending">
+    <meta name="description" content='"Metamorphosis Parsnip Universe" is an odd string of words. Come play a videogame attempting to make sense of it.'>
+    <meta name=”robots” content="index">
+</head>
 
 <h1>"Metamorphosis Parsnip Universe"</h1>
 
@@ -43,8 +47,12 @@ setTimeout((x) => alert('get "Metamorphosis Parsnip Universe"ed'), 20000)
 
 
 setInterval(function countdown() {
-    timer--;
-    document.getElementById("timer").innerHTML = `You have: ${timer} seconds`;
+    if(timer > 0) {
+        timer--;
+        document.getElementById("timer").innerHTML = `You have: ${timer} seconds`;
+    } else{
+        document.getElementById("timer").innerHTML = `BOOM you exploded. Game over. You managed to complete stage ${stage-1}`
+    }
 },1000)
 
 
